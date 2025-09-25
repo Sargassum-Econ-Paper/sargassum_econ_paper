@@ -12,16 +12,18 @@ import geemap
 # Image and cloud sources
 s2_source = 'COPERNICUS/S2'  # Top of Atmosphere -- used for final classification
 s2_clouds_source = 'COPERNICUS/S2_CLOUD_PROBABILITY'
-asset_location = 'projects/ee-abnatcap/assets/sargassum/'
-
-# Data sources (other than S2)
+# Elevation
 SRTM = ee.Image("USGS/SRTMGL1_003")
-samples = ee.FeatureCollection(asset_location + "samples_S2toa_20190507_allbands")  # Top of Atmosphere v1 -- used for final classification
 
-# classes = ee.FeatureCollection(asset_location + "trainingsites20190507")
+# Other Data sources
+# Replace the following variable with your GEE asset location
+asset_location = 'projects/ee-abnatcap/assets/sargassum/'
+# The two following assets need to be uploaded from shapefiles in data dir to GEE assets
+samples = ee.FeatureCollection(asset_location + "samples_S2toa_20190507_allbands")  # Top of Atmosphere v1 -- used for final classification
 nearshore_mask = ee.FeatureCollection(asset_location + "S2_sargassum_mask")
 
 # Export Locations
+# Update this to the Google Drive folder where you want to export the images
 output_folder = 's2toa_classified_v1'   # Top of Atmosphere v1 -- used for final classification
 
 # Image masking thresholds
